@@ -1,4 +1,4 @@
-# Dockerized Laravel Project
+# Laravel Project Dockerized 
 
 A Laravel application running with Docker, using Nginx, PHP, and MySQL.
 
