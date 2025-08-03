@@ -23,12 +23,17 @@ cd dockerize-laravel-application
 
 ### 2. Environment Setup
 
+# Navigate to the src directory
+cd dockerize-laravel-application
+
 ```bash
 # Copy the example env file
 cp .env.example .env
 
 # Update the following variables in .env file
-DB_HOST=mysql
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
 DB_DATABASE=laravel
 DB_USERNAME=laravel
 DB_PASSWORD=laravel
@@ -38,23 +43,23 @@ DB_PASSWORD=laravel
 
 ```bash
 # Build and start the containers in detached mode
-docker-compose up -d
+docker compose up -d
 
 # Install PHP dependencies
-docker-compose exec laravel-app composer install
+docker compose exec -it app composer install
 
 # Generate application key
-docker-compose exec laravel-app php artisan key:generate
+docker compose exec -it app php artisan key:generate
 ```
 
 ### 4. Database Setup
 
 ```bash
 # Run database migrations
-docker-compose exec laravel-app php artisan migrate
+docker compose exec -it app php artisan migrate
 
 # (Optional) Seed the database
-docker-compose exec laravel-app php artisan db:seed
+docker compose exec -it app php artisan db:seed
 ```
 
 ## Docker Container Structure
