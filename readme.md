@@ -82,35 +82,35 @@ The project contains the following containers:
 
 ```bash
 # Start containers
-docker-compose up -d
+docker compose up -d
 
 # Stop containers
-docker-compose down
+docker compose down
 
 # View container logs
-docker-compose logs -f
+docker compose logs -f
 
 # Access PHP container shell
-docker-compose exec laravel-app bash
+docker compose exec app bash
 
 # List running containers
-docker-compose ps
+docker compose ps
 ```
 
 ### Laravel Commands
 
 ```bash
 # Clear application cache
-docker-compose exec laravel-app php artisan cache:clear
+docker compose exec app php artisan cache:clear
 
 # Run migrations
-docker-compose exec laravel-app php artisan migrate
+docker compose exec app php artisan migrate
 
 # Create a new controller
-docker-compose exec laravel-app php artisan make:controller ControllerName
+docker compose exec app php artisan make:controller ControllerName
 
 # Run tests
-docker-compose exec laravel-app php artisan test
+docker compose exec app php artisan test
 ```
 
 ## Development Workflow
@@ -119,11 +119,11 @@ docker-compose exec laravel-app php artisan test
 2. The changes will be automatically reflected due to volume mapping
 3. If you modify dependencies:
    ```bash
-   docker-compose exec laravel-app composer update
+   docker compose exec app composer update
    ```
 4. If you modify the database:
    ```bash
-   docker-compose exec laravel-app php artisan migrate
+   docker compose exec app php artisan migrate
    ```
 
 ## Troubleshooting
@@ -133,17 +133,17 @@ docker-compose exec laravel-app php artisan test
 1. **Permission Issues**
    ```bash
    # Fix storage permissions
-   docker-compose exec laravel-app chown -R www-data:www-data storage
-   docker-compose exec laravel-app chmod -R 775 storage
+   docker compose exec app chown -R www-data:www-data storage
+   docker compose exec app chmod -R 775 storage
    ```
 
 2. **Container Won't Start**
    ```bash
    # Check logs
-   docker-compose logs
+   docker compose logs
 
    # Rebuild containers
-   docker-compose up -d --build
+   docker compose up -d --build
    ```
 
 3. **Database Connection Issues**
